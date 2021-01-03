@@ -4,6 +4,7 @@ export default class SpeakAssistant {
         response.lang = 'pl-PL';
         response.text = message;
         window.speechSynthesis.speak(response);
+        return true;
     }
 }
 
