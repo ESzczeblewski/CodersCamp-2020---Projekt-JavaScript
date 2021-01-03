@@ -6,5 +6,5 @@ const button = document.getElementById('button');
 
 button.addEventListener('click', onClick);
 async function onClick () {
-    console.log(await recognition.recognise());
+    recognition.recognize();
 };

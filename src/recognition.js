@@ -1,17 +1,18 @@
 export default class SpeechRecognition {
-    async recognise() {
+    async recognize() {
         return new Promise(resolve => {
             const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
 
-            recognition.continuous = false;
+            recognition.continuous = true;
             recognition.lang = 'pl-PL';
             recognition.interimResults = false;
             recognition.maxAlternatives = 1;
 
             recognition.onresult = function(event) {
-                recognition.stop();
-                resolve(event.results[0][0].transcript);
+                const { resultIndex } = event;
+                resolve(event.results[resultIndex][0].transcript);
+                console.log(event.results[resultIndex][0].transcript.trim());   
             }
 
             recognition.start();
