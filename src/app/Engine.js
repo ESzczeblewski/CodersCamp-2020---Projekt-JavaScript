@@ -4,7 +4,7 @@ import SpeechRecognition from './recognition.js';
 import SpeakAssistant from './synthesis.js';
 
 export default class Engine {
-  async init() {
+  static async init() {
     const msg = 'Nie rozumiem';
     await SpeechRecognition.recognize();
     const speech = SpeakAssistant.talk(msg);
