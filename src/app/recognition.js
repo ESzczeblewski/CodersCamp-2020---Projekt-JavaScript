@@ -1,5 +1,5 @@
 export default class SpeechRecognition {
-    async recognize() {
+    static async recognize() {
         return new Promise(resolve => {
             const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
@@ -12,7 +12,7 @@ export default class SpeechRecognition {
             recognition.onresult = function(event) {
                 const { resultIndex } = event;
                 resolve(event.results[resultIndex][0].transcript);
-                console.log(event.results[resultIndex][0].transcript.trim());   
+                console.log(event.results[resultIndex][0].transcript.trim());
             }
 
             recognition.start();
