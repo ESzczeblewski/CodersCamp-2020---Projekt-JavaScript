@@ -26,7 +26,8 @@ export default class Engine {
   }
 
   listenLoop() {
-    this.recognition.onResult(result => {
+    this.recognition.onRecognitionResult(result => {
+      this.recognition.startRecognition();
       console.log(result);
     })
   }
