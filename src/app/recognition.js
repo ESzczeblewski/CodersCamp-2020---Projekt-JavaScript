@@ -4,7 +4,7 @@ export default class SpeechRecognition {
             const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
 
-            recognition.continuous = true;
+            recognition.continuous = false;
             recognition.lang = 'pl-PL';
             recognition.interimResults = false;
             recognition.maxAlternatives = 1;

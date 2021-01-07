@@ -1,11 +1,30 @@
 export default class SpeakAssistant {
-    static talk(message) {
-        let response = new SpeechSynthesisUtterance();
-        response.lang = 'pl-PL';
-        response.text = message;
-        window.speechSynthesis.speak(response);
-        return true;
+    constructor(utteranceInfo) {
+        this.utterance = new SpeechSynthesisUtterance();
+        this.utteranceInfo = utteranceInfo;
+        this.utterance.lang = this.utteranceInfo.lang;
+        // this.utterance.text = this.utteranceInfo.text;
+        this.isTalking = window.speechSynthesis.speaking;
     }
+    talk(msg) {
+        this.utterance.text = msg;
+        window.speechSynthesis.speak(this.utterance);
+        this.utterance.onstart = function () {
+            this.isTalking = true;
+        }
+        this.utterance.onend = function() {
+            this.isTalking = false;
+            return this.isTalking;
+        }
+    }
+    stopTalking() {
+        window.speechSynthesis.cancel();
+        this.isTalking = false;
+        return this.isTalking;
+    }
+    // checkIfTalking() {
+    //     this.isTalking = window.speechSynthesis.speaking;
+    //     return this.isTalking;
+    // }
 }
-
-//SpeakAssistant.talk("elo elo");
+// const assistant = new SpeakAssistant({lang: "pl-PL"});

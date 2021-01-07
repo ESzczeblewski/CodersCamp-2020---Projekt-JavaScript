@@ -5,11 +5,13 @@ import SpeakAssistant from './synthesis.js';
 
 export default class Engine {
   static async init() {
+    const synthesisAssistant = new SpeakAssistant({lang: "pl-PL"});
     const msg = 'Nie rozumiem';
     await SpeechRecognition.recognize();
-    const speech = SpeakAssistant.talk(msg);
-    if (speech === true) {
-      this.init();
+    synthesisAssistant.talk(msg);
+    if (synthesisAssistant.isTalking === false) {
+      await SpeechRecognition.recognize();
+      synthesisAssistant.talk(msg);
     }
   }
 }
