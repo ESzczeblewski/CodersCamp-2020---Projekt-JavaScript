@@ -9,9 +9,9 @@ export default class Engine {
     const msg = 'Nie rozumiem';
     await SpeechRecognition.recognize();
     synthesisAssistant.talk(msg);
-    if (synthesisAssistant.isTalking === false) {
+    if (!synthesisAssistant.isTalking) {
       await SpeechRecognition.recognize();
-      synthesisAssistant.talk(msg);
+      synthesisAssistant.talk();
     }
   }
 }
