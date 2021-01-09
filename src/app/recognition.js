@@ -39,7 +39,7 @@ class Recognition {
 
 	listen(state){
         state ? this.listening = true : this.listening = false;
-        this.recognized = '';
+        this.result = '';
     }
 
 	startRecording() {

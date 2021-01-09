@@ -21,7 +21,6 @@ export default class Engine {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
         this.recognition.startRecording();
-        this.recognition.listen(true);
         button.classList.add("lisining");
     })
   }
@@ -30,18 +29,7 @@ export default class Engine {
     this.recognition.onRecognitionResult(result => {
       this.recognition.startRecording();
 
-      if  (result !== 'test' && !this.recognition.listening) {
-        this.recognition.listen(false);
-        return;
-      }
-
-      this.recognition.listen(true);
-
-      if (!result || result === 'test') return;
-      
       console.log(result);
-
-      this.recognition.listen(false);
 
     });
   }
