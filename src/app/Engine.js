@@ -30,12 +30,20 @@ export default class Engine {
     this.recognition.onRecognitionResult(result => {
       this.recognition.startRecording();
 
-      if  (result !== 'test') {
+      if  (result !== 'test' && !this.recognition.listening) {
         this.recognition.listen(false);
-        console.log(result);
         return;
       }
-    })
+
+      this.recognition.listen(true);
+
+      if (!result || result === 'test') return;
+      
+      console.log(result);
+
+      this.recognition.listen(false);
+
+    });
   }
 
 }
