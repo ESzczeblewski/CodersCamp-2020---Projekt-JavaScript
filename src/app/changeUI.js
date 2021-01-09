@@ -18,22 +18,18 @@ export default class ChangeUI {
         })
     }
 
-    record() {
-        this.face.classList.add('record')
+    record(isRecord) {
+        isRecord ? this.face.classList.add('speak') : this.face.classList.remove('record');
     }
 
-    listen() {
-        this.face.classList.add('listening');
+    listen(isListen) {
+        isListen ? this.face.classList.add('listening') : this.face.classList.remove('listening');
     }
-    speak() {
-        this.face.classList.add('speak');
+
+    speak(isSpeak) {
+        isSpeak ? this.face.classList.add('speak') : this.face.classList.remove('speak');
     }
     stop() {
         this.face.classList.add('btnFace');
     }
-
 }
-
-
-
-
