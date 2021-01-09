@@ -3,38 +3,50 @@ class Recognition {
 			this.settings = settings;
 			this.speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 			this.recognition = new this.speechRecognition();
-			this.result = null;
-			this.listening = false;
+			this.result = '';
+			this.recording = false;
+			this.startRecognition();
 		}
 
     startRecognition() {
+
 			this.recognition.lang = this.settings.lang || 'pl-PL';
       this.recognition.continuous = true;
 			this.recognition.interimResults = true;
 			this.recognition.addEventListener('result', event => {
 				const { resultIndex } = event;
-				this.result = event.results[resultIndex][0].transcript.trim();
+				const recognized = event.results[resultIndex][0].transcript.trim();
+				if(this.recording) {
+					this.result = recognized;
+					return;
+				}
+				this.result = '';
 			})
-			this.recognition.start();
 		}
 
-		startListening(listen) {
-			if (listen) {
-
-			}
-
+		startRecording() {
+			this.recognition.start();
 		}
 
 		onRecognitionResult(callback) {
 			this.recognition.addEventListener('end', () => {
-				callback(this.result);
+					callback(this.result);
 			})
-
 		}
 
-		stopRecognition() {
-			window.SpeechRecognition.abort();
-			this.recording = false;
+		listen(listen) {
+
+			if (listen === false) {
+				this.recording = false;
+			}
+
+			if (listen === true) {
+				this.recording = true;
+			}
+		}
+
+		stopRecording() {
+			this.recognition.abort();
 		}
 
 }
