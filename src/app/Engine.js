@@ -8,7 +8,7 @@ export default class Engine {
     this.settings = settings;
     this.recognition = null;
     this.assistantName = "Krysia";
-
+  
   }
 
   init() {
@@ -17,30 +17,25 @@ export default class Engine {
     });
     this.startBtn();
     this.listenLoop();
-
   }
 
   startBtn() {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
-      button.classList.add("lisining");
-      this.recognition.startRecognition();
+        this.recognition.startRecording();
+        button.classList.add("lisining");
     })
   }
-
 
   listenLoop() {
     this.recognition.onRecognitionResult(result => {
-      
-      this.recognition.startRecognition();
-      this.wakeWord(result);
-    })
-  }
-
-  wakeWord(sentence) {
-    if (sentence.includes(this.assistantName)){  
-      const indexOfWord = sentence.indexOf(this.assistantName);
-      console.log(sentence.substring(indexOfWord + this.assistantName.length +1, sentence.length));
-    }
+       if (result == this.assistantName && this.recognition.listening == false) {
+        this.recognition.listen(true);
+      } else if (result !== this.assistantName && this.recognition.listening == true) {
+        this.recognition.listen(false);
+        console.log(result);
+      }
+      this.recognition.startRecording();
+    });
   }
 }

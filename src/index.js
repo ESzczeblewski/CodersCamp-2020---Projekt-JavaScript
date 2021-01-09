@@ -1,10 +1,5 @@
 import Engine from './app/Engine.js';
 
-const button = document.querySelector('.btnSpeak');
+const engine = new Engine();
 
-button.addEventListener('click', buttonOnClick);
-
-function buttonOnClick() {
-    button.classList.add("lisining");
-    Engine.init();
-}
+engine.init();
