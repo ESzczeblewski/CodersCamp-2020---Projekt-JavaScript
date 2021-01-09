@@ -1,21 +1,57 @@
-export default class SpeechRecognition {
-    static async recognize() {
-        return new Promise(resolve => {
-            const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-            const recognition = new SpeechRecognition();
+class Recognition {
+    constructor(settings = {}) {
+		this.settings = settings;
+		this.speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+		this.recognition = new this.speechRecognition();
+		this.result = '';
+		this.recording = false;
+		this.listening = false;
+		this.startRecognition();
+	}
 
-            recognition.continuous = true;
-            recognition.lang = 'pl-PL';
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
+    startRecognition() {
 
-            recognition.onresult = function(event) {
-                const { resultIndex } = event;
-                resolve(event.results[resultIndex][0].transcript);
-                console.log(event.results[resultIndex][0].transcript.trim());
-            }
+		this.recognition.lang = this.settings.lang || 'pl-PL';
+    	this.recognition.continuous = true;
+		this.recognition.interimResults = true;
 
-            recognition.start();
-        });
+		this.recognition.addEventListener('result', event => {
+
+			const { resultIndex } = event;
+			const recognized = event.results[resultIndex][0].transcript.trim();
+
+			if(this.recording) {
+				this.result = recognized;
+				return;
+			}
+
+			this.result = '';
+
+		});
+
+	}
+
+	onRecognitionResult(callback) {
+		this.recognition.addEventListener('end', () => {
+			if (this.recording) callback(this.result);
+		})
+	}
+
+	listen(state){
+        state ? this.listening = true : this.listening = false;
+        this.result = '';
     }
+
+	startRecording() {
+		this.recording = true;
+		this.recognition.start();
+	}
+
+	stopRecording() {
+		this.recording = false;
+		this.recognition.abort();
+	}
+
 }
+
+export default Recognition;
