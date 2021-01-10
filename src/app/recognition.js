@@ -12,8 +12,8 @@ class Recognition {
 	startRecognition() {
 
 	this.recognition.lang = this.settings.lang || 'pl-PL';
-	this.recognition.continuous = true;
-	this.recognition.interimResults = true;
+	this.recognition.continuous = false;
+	this.recognition.interimResults = false;
 
 	this.recognition.addEventListener('result', event => {
 
@@ -21,7 +21,7 @@ class Recognition {
 		const recognized = event.results[resultIndex][0].transcript.trim();
 
 		if(this.recording) {
-			this.result = recognized;
+			this.result = recognized.toLowerCase();
 			return;
 		}
 

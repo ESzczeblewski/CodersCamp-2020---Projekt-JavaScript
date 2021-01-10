@@ -1,6 +1,11 @@
 import Engine from './app/Engine.js';
 
-const engine = new Engine();
+const engineSettings = {
+    name:'jerzy',
+    lang: 'pl-PL'
+}
+
+const engine = new Engine(engineSettings);
 
 
 engine.init();
