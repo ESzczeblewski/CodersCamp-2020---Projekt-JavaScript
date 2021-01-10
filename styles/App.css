@@ -20,7 +20,7 @@
      margin-top: 50px;
      margin-bottom: 40px;
      text-align: center;
-     background-color: red;
+     background-color: rgb(230, 111, 111);
      border-radius: 50%;
      border: black 5px solid;
      display: flex;
@@ -74,14 +74,12 @@
  }
 
 
- .btnFace:hover {
+ /* .btnFace:hover {
+    background-color: rgb(211, 16, 16);
+    box-shadow: 0 0 100px #f34121, 0 0 60px #f34121, 0 0 80px #f34121;
+} */
 
-     background-color: rgb(211, 16, 16);
-     box-shadow: 0 0 100px #f34121, 0 0 60px #f34121, 0 0 80px #f34121;
-
- }
-
- .lisining {
+ .listening {
      background-color: rgb(235, 167, 42);
      box-shadow: 0 0 100px #f5ba3c, 0 0 60px #f5ba3c, 0 0 80px #f5ba3c;
  }
@@ -89,4 +87,9 @@
  .speak {
      background-color: rgb(71, 175, 30);
      box-shadow: 0 0 100px #52f53c, 0 0 60px #52f53c, 0 0 80px #52f53c;
+ }
+
+ .record {
+     background-color: rgb(211, 16, 16);
+     box-shadow: 0 0 100px #f34121, 0 0 60px #f34121, 0 0 80px #f34121;
  }
