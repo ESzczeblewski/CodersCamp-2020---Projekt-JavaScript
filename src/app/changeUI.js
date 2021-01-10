@@ -19,7 +19,7 @@ export default class ChangeUI {
     }
 
     record(isRecord) {
-        isRecord ? this.face.classList.add('speak') : this.face.classList.remove('record');
+        isRecord ? this.face.classList.add('record') : this.face.classList.remove('record');
     }
 
     listen(isListen) {
