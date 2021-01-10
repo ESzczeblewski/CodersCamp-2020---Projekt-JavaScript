@@ -8,7 +8,8 @@ export default class Engine {
   constructor(settings = {}) {
     this.settings = settings;
     this.recognition = null;
-    this.assistantName = "krysia";
+    console.log(this.settings.name);
+    this.assistantName = this.settings.name || "krysia";
   }
 
   init() {
