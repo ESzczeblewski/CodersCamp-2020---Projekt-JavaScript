@@ -24,7 +24,7 @@ export default class Engine {
   startBtn() {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
-        this.changeUI.record(true);
+        this.changeUI.record();
         this.recognition.startRecording();
     })
   }
@@ -33,17 +33,14 @@ export default class Engine {
     this.recognition.onRecognitionResult(result => {
       if (result === this.assistantName && this.recognition.listening === false) {
         this.recognition.listen(true);
-        this.changeUI.record(false);
-        this.changeUI.listen(true);
+        this.changeUI.listen();
       } else if (result !== this.assistantName && this.recognition.listening === true) {
         this.recognition.listen(false);
         console.log(result);
-        this.changeUI.listen(false);
-        this.changeUI.speak(true);
+        this.changeUI.speak();
         this.synthesis.talk();
         this.synthesis.invokeAfterTalk(() => {
-          this.changeUI.speak(false);
-          this.changeUI.record(true);
+          this.changeUI.record();
         });        
       }
       this.recognition.startRecording();

@@ -1,7 +1,8 @@
 export default class ChangeUI {
     constructor() {
         this.button = null;
-        this.face = null
+        this.face = null;
+        this._classes = ['record', 'listening', 'speak'];
         this.init();
     }
 
@@ -18,18 +19,25 @@ export default class ChangeUI {
         })
     }
 
-    record(isRecord) {
-        isRecord ? this.face.classList.add('record') : this.face.classList.remove('record');
+    record() {
+        this._clear();
+        this.face.classList.add('record');
     }
 
-    listen(isListen) {
-        isListen ? this.face.classList.add('listening') : this.face.classList.remove('listening');
+    listen() {
+        this._clear();
+        this.face.classList.add('listening');
     }
 
-    speak(isSpeak) {
-        isSpeak ? this.face.classList.add('speak') : this.face.classList.remove('speak');
+    speak() {
+        this._clear();
+        this.face.classList.add('speak');
     }
     stop() {
         this.face.classList.add('btnFace');
+    }
+
+    _clear() {
+        this._classes.forEach(item => this.face.classList.remove(item));
     }
 }
