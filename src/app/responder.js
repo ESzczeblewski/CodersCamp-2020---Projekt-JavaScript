@@ -1,22 +1,17 @@
+import { Commands }  from "./commands"
+
 export default class Responder {
-    constructor() {
-        this._defaultResponse = "nie rozumiem"
-        this._expressionDictionary = [
-            ["dzień dobry", "witaj"],
-            ["dobry wieczór"],
-            ["do widzenia", "do zobaczenia", "na razie", "żegnaj"],
-            ["cześć", "siema", "elo"]
-        ]
+    constructor(settings = {}) {
+        this._settings = settings
+        this._defaultResponse = this._settings.defaultResponse || "nie rozumiem";
+        this._commandList = Commands;
     }
     respondTo(msg) {
-        for (const expressionArr of this._expressionDictionary){
-            if (expressionArr.some(expression => msg.includes(expression))){
-                return expressionArr[this._randomInt(expressionArr.length)];
+        for (const command of this._commandList){
+            if (command.request.some(expression => msg.includes(expression))){
+                return command.answer();
             }
         }
         return this._defaultResponse;
-    }
-    _randomInt(upperB) {
-        return Math.floor(Math.random() * upperB)
     }
 }

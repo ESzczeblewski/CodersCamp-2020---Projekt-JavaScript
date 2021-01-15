@@ -39,7 +39,8 @@ export default class Engine {
       } else if (result !== this.assistantName && this.recognition.listening === true) {
         this.recognition.listen(false);
         console.log(result);
-        let answer = this.responder.respondTo(result);
+        const answer = this.responder.respondTo(result);
+        console.log(answer);
         this.changeUI.speak();
         this.synthesis.talk(answer);
         this.synthesis.invokeAfterTalk(() => {
