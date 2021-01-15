@@ -1,4 +1,7 @@
-import { Commands }  from "./commands"
+import { Commands } from "./commands"
+
+
+
 
 export default class Responder {
     constructor(settings = {}) {
@@ -7,10 +10,29 @@ export default class Responder {
         this._commandList = Commands;
     }
     respondTo(msg) {
-        for (const command of this._commandList){
-            if (command.request.some(expression => msg.includes(expression))){
-                return command.answer();
+
+
+
+
+
+        for (const command of this._commandList) {
+
+            for (let element of command.request) {
+                console.log(element)
+                let stringSimilarity = require("string-similarity");
+                let similarity = stringSimilarity.compareTwoStrings(msg, element);
+                console.log(similarity);
+                console.log(msg);
+
+                if (similarity >= 0.6) {
+                    console.log("dzialalaaaa");
+                    let similaryWord = element;
+                    console.log(similaryWord);
+                    return command.answer();
+                }
             }
+
+
         }
         return this._defaultResponse;
     }

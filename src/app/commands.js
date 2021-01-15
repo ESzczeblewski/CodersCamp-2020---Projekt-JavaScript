@@ -36,7 +36,7 @@ export const Commands = [
 
     {
         //Salutations
-        request: ["cześć", "siema", "elo"],
+        request: ["cześć", "siema", "elo",],
         answer() {
             return _internalResponse.call(this);
         }
