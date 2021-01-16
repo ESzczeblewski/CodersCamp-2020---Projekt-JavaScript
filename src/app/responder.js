@@ -5,12 +5,12 @@ export default class Responder {
         this._defaultResponse = this._settings.defaultResponse || "nie rozumiem";
         this._commandList = Commands;
     }
-    respondTo(msg) {
+    async respondTo(msg) {
 
 
         for (const command of this._commandList) {
             if (command.request.some(expression => msg.includes(expression))) {
-                return command.answer();
+                return await command.answer(msg);
             }
         }
         return this._defaultResponse;

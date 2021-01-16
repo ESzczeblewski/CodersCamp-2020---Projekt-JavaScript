@@ -32,20 +32,20 @@ export default class Engine {
   }
 
   listenLoop() {
-    this.recognition.onRecognitionResult(result => {
+    this.recognition.onRecognitionResult(async (result) => {
       if (result === this.assistantName && this.recognition.listening === false) {
         this.recognition.listen(true);
         this.changeUI.listen();
       } else if (result !== this.assistantName && this.recognition.listening === true) {
         this.recognition.listen(false);
-        console.log(result);
-        const answer = this.responder.respondTo(result);
-        console.log(answer);
+        console.log(`result: ${result}`);
+        let answer = await this.responder.respondTo(result);
+        console.log(`answer: ${answer}`);
         this.changeUI.speak();
         this.synthesis.talk(answer);
         this.synthesis.invokeAfterTalk(() => {
           this.changeUI.record();
-        });        
+        });
       }
       this.recognition.startRecording();
     });
