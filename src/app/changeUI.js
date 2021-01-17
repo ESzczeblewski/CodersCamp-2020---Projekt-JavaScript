@@ -43,7 +43,7 @@ export default class ChangeUI {
         this._classes.forEach(item => this.face.classList.remove(item));
     }
 
-    _removeLinksList() {
+    removeLinksList() {
         if (this.container.querySelector('.wiki')) {
             this.container.querySelector('.wiki').remove();
         }
@@ -58,7 +58,9 @@ export default class ChangeUI {
         const wikiListDiv = document.createElement('div');
         wikiListDiv.classList.add('wiki-list');
 
-        const linksArr = arr.map(el => `<a class="wiki-list-item" href="https://pl.wikipedia.org/?curid=${el.pageid}" target="_blank">${el.title}</a>`);
+        const wikiLink = 'https://pl.wikipedia.org/?curid=';
+
+        const linksArr = arr.map(el => `<a class="wiki-list-item" href="${wikiLink}${el.pageid}" target="_blank">${el.title}</a>`);
 
         wikiListDiv.innerHTML = linksArr.join('');
 
