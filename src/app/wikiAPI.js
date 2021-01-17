@@ -13,8 +13,20 @@ export default class wikiAPI {
 
     _wikiRequest() {
         return new Promise((resolve, reject) => {
-            const requestURL = `https://pl.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=${this._phrase}`;
-            axios.get(requestURL).then(response => {
+            const requestURL = `https://pl.wikipedia.org/w/api.php`;
+            axios.get(requestURL, {
+                params: {
+                    action: "query",
+                    list: "search",
+                    srsearch: this._phrase,
+                    prop: "extracts",
+                    exchars: 1200,
+                    format: "json",
+                    origin: "*",
+                    srlimit: 5,
+                }
+            }).then(response => {
+                // const str = response.data.query.search[0].snippet.replace(/</?[^>]+>/gi, '');
                 if(response.data.query.searchinfo.totalhits === 0) {
                     resolve("");
                 } else {
