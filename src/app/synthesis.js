@@ -32,4 +32,3 @@ export default class SpeakAssistant {
         return this.isTalking;
     }
 }
-// const assistant = new SpeakAssistant({lang: "pl-PL"});
