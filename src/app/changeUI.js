@@ -34,6 +34,7 @@ export default class ChangeUI {
         this.face.classList.add('speak');
     }
     stop() {
+        this._clear();
         this.face.classList.add('btnFace');
     }
 

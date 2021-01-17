@@ -6,6 +6,7 @@ export default class Responder {
         this._defaultResponse = this._settings.defaultResponse || "nie rozumiem";
         this._commandList = Commands;
     }
+
     respondTo(msg) {
 
         for (const command of this._commandList) {
@@ -19,8 +20,6 @@ export default class Responder {
                     console.log(similaryWord);
                     return command.answer();
                 }
-            }
-
         }
         return this._defaultResponse;
     }
