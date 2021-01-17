@@ -1,11 +1,9 @@
-import Engine from './app/Engine.js';
+import Engine from './app/engine.js';
 
 const engineSettings = {
-    name:'kamil',
+    name: 'kamil',
     lang: 'pl-PL'
 }
 
 const engine = new Engine(engineSettings);
-
-
 engine.init();

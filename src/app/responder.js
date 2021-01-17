@@ -7,7 +7,6 @@ export default class Responder {
     }
     async respondTo(msg) {
 
-
         for (const command of this._commandList) {
             if (command.request.some(expression => msg.includes(expression))) {
                 return await command.answer(msg);

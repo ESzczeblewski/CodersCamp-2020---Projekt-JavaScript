@@ -3,9 +3,9 @@ export const Commands = [
     {
         //Wikipedia
         request: [
-            "co to",
             "co to jest",
             "co to znaczy",
+            "co to",
             "czym są",
             "kto to jest", 
             "kto to", 
@@ -20,7 +20,7 @@ export const Commands = [
             for (const wikiQuestion of this.request){
                 if(msg.includes(wikiQuestion)) {
                     const wikiSearchPhrase = msg.replace(`${wikiQuestion} `, "");
-                    const wikiAnswersArr = await wikipedia.processPhrase(wikiSearchPhrase); // zwraca tablicę obiektów, trzeba przerobić, by zwracała właściwość '.snippet' pierwszego obiektu do czytania
+                    const wikiAnswersArr = await wikipedia.processPhrase(wikiSearchPhrase); // zwraca tablicę obiektów (albo pustego stringa, jeśli brak odpowiedzi na zadane hasło)
                     console.log(wikiAnswersArr); //DEV ONLY
                     return "Przeszukałem wiki";  
                 } 
