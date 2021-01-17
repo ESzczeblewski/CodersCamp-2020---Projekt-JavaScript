@@ -50,7 +50,7 @@ export default class ChangeUI {
     }
 
     renderLinks(arr) {
-        this._removeLinksList();
+        this.removeLinksList();
 
         const wikiDiv = document.createElement('div');
         wikiDiv.classList.add('wiki');
