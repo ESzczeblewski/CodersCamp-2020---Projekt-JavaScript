@@ -1,4 +1,4 @@
-import Engine from './app/Engine.js';
+import Engine from './app/engine.js';
 
 const engineSettings = {
     name:'jerzy',
