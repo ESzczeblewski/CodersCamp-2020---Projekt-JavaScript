@@ -17,6 +17,7 @@ export default class ChangeUI {
             //     face.classList.add("listening");
             // }
         })
+        this.container = document.querySelector('.container');
     }
 
     record() {
@@ -40,5 +41,29 @@ export default class ChangeUI {
 
     _clear() {
         this._classes.forEach(item => this.face.classList.remove(item));
+    }
+
+    _removeLinksList() {
+        if (this.container.querySelector('.wiki')) {
+            this.container.querySelector('.wiki').remove();
+        }
+    }
+
+    renderLinks(arr) {
+        this._removeLinksList();
+
+        const wikiDiv = document.createElement('div');
+        wikiDiv.classList.add('wiki');
+
+        const wikiListDiv = document.createElement('div');
+        wikiListDiv.classList.add('wiki-list');
+
+        const linksArr = arr.map(el => `<a class="wiki-list-item" href="https://pl.wikipedia.org/?curid=${el.pageid}" target="_blank">${el.title}</a>`);
+
+        wikiListDiv.innerHTML = linksArr.join('');
+
+        wikiDiv.insertAdjacentElement('beforeend', wikiListDiv);
+
+        this.container.insertAdjacentElement('afterbegin', wikiDiv);
     }
 }
