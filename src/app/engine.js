@@ -21,13 +21,21 @@ export default class Engine {
     this.responder = new Responder();
     this.startBtn();
     this.listenLoop();
+    this.recognition.startRecognition();
   }
 
   startBtn() {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
-        this.changeUI.record();
-        this.recognition.startRecording();
+        if(!this.recognition.recording){
+          this.recognition.startRecording();
+          this.changeUI.record();
+        } else if (this.synthesis.isTalking){
+          this.synthesis.stopTalking();
+        } else {
+          this.recognition.stopRecording();
+          this.changeUI.stop();
+        }
     })
   }
 
@@ -47,7 +55,6 @@ export default class Engine {
           this.changeUI.record();
         });
       }
-      this.recognition.startRecording();
     });
   }
 }

@@ -103,6 +103,14 @@ export const Commands = [
             const now = new Date();
             return now.toLocaleDateString();
         }
+    },
+
+    {
+        //LOREM IPSUM //dev-only
+        request: ["inwokacja", "inwokację"],
+        answer() {
+            return "Litwo! Ojczyzno moja! Ty jesteś jak zdrowie, Ile cię trzeba cenić, ten tylko się dowie, Kto cię stracił. Dziś piękność twą w całej ozdobie Widzę i opisuję, bo tęsknię po tobie";
+        }
     }
 ]
 
