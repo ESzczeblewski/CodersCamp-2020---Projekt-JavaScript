@@ -36,9 +36,9 @@ class Recognition {
 	}
 
 	listen(state) {
-			state ? this.listening = true : this.listening = false;
-			this.result = '';
-		}
+		state ? this.listening = true : this.listening = false;
+		this.result = '';
+	}
 
 	startRecording() {
 		this.recording = true;
@@ -49,7 +49,6 @@ class Recognition {
 		this.recording = false;
 		this.recognition.abort();
 	}
-
 }
 
 export default Recognition;
