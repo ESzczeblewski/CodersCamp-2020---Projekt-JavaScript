@@ -11,20 +11,15 @@ export default class Responder {
         for (const command of this._commandList) {
 
             for (let element of command.request) {
-                console.log(element)
                 let stringSimilarity = require("string-similarity");
                 let similarity = stringSimilarity.compareTwoStrings(msg, element);
-                console.log(similarity);
-                console.log(msg);
 
                 if (similarity >= 0.6) {
-                    console.log("dzialalaaaa");
                     let similaryWord = element;
                     console.log(similaryWord);
                     return command.answer();
                 }
             }
-
 
         }
         return this._defaultResponse;
