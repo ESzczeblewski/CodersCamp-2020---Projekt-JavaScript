@@ -11,10 +11,9 @@ export default class SpeakAssistant {
             this.utterance.pitch = this.utteranceInfo.pitch || 1;
             this.utterance.rate = this.utteranceInfo.rate || 1;
             this.utterance.volume = this.utteranceInfo.volume || 1;
-            this.utterance.voice = this.utteranceInfo.voice || window.speechSynthesis.getVoices().find(el => el.lang === this.utterance.lang || el.default === true);
             this.utterance.text = msg;
             window.speechSynthesis.speak(this.utterance);
-            this.utterance.onstart = function () {
+            this.utterance.onstart = () => {
                 this.isTalking = true;
             }
         } catch (err) {

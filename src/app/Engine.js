@@ -21,16 +21,15 @@ export default class Engine {
     this.responder = new Responder();
     this.startBtn();
     this.listenLoop();
+    this.recognition.startRecognition();
   }
 
   startBtn() {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
-        console.log(!this.recognition.recording);
-        console.log(this.synthesis.isTalking);
-        this.changeUI.record();
         if(!this.recognition.recording){
           this.recognition.startRecording();
+          this.changeUI.record();
         } else if (this.synthesis.isTalking){
           this.synthesis.stopTalking();
         } else {
