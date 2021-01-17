@@ -17,7 +17,6 @@ export default class Responder {
 
                 if (similarity >= 0.6) {
                     let similaryWord = element;
-                    console.log("similar word: " + similaryWord);
                     return command.answer(similaryWord);
                 }
             }
