@@ -11,7 +11,6 @@ export default class SpeakAssistant {
             this.utterance.pitch = this.utteranceInfo.pitch || 1;
             this.utterance.rate = this.utteranceInfo.rate || 1;
             this.utterance.volume = this.utteranceInfo.volume || 1;
-            this.utterance.voice = this.utteranceInfo.voice || window.speechSynthesis.getVoices().find(el => el.lang === this.utterance.lang || el.default === true);
             this.utterance.text = msg;
             window.speechSynthesis.speak(this.utterance);
             this.utterance.onstart = function () {
@@ -33,4 +32,3 @@ export default class SpeakAssistant {
         return this.isTalking;
     }
 }
-// const assistant = new SpeakAssistant({lang: "pl-PL"});
