@@ -13,13 +13,14 @@ export default class Responder {
 
             for (let element of command.request) {
                 let stringSimilarity = require("string-similarity");
-                let similarity = stringSimilarity.compareTwoStrings(msg, element);
+                let similarity = stringSimilarity.compareTwoStrings(msg.substring(0, element.length), element);
 
                 if (similarity >= 0.6) {
                     let similaryWord = element;
-                    console.log(similaryWord);
-                    return command.answer();
+                    console.log("similar word: " + similaryWord);
+                    return command.answer(similaryWord);
                 }
+            }
         }
         return this._defaultResponse;
     }
