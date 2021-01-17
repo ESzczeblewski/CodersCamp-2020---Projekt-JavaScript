@@ -16,8 +16,7 @@ export default class Responder {
                 let similarity = stringSimilarity.compareTwoStrings(msg.substring(0, element.length), element);
 
                 if (similarity >= 0.6) {
-                    let similaryWord = element;
-                    return command.answer(similaryWord);
+                    return command.answer(msg);
                 }
             }
         }
