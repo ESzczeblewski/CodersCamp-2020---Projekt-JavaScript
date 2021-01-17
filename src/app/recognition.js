@@ -4,9 +4,8 @@ class Recognition {
 	this.speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 	this.recognition = new this.speechRecognition();
 	this.result = '';
-	this.recording = true;
+	this.recording = false;
 	this.listening = false;
-	this.startRecognition();
 }
 
 	startRecognition() {
@@ -33,7 +32,10 @@ class Recognition {
 
 onRecognitionResult(callback) {
 	this.recognition.addEventListener('end', () => {
-		if (this.recording && this.result !== '') callback(this.result);
+		if (this.recording){
+			if (this.result !== '') callback(this.result);
+			this.startRecording();
+		}
 	})
 }
 

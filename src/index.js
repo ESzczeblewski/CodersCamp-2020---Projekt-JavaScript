@@ -1,7 +1,7 @@
 import Engine from './app/Engine.js';
 
 const engineSettings = {
-    name:'jerzy',
+    name:'kamil',
     lang: 'pl-PL'
 }
 

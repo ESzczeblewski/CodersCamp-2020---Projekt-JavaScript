@@ -26,8 +26,17 @@ export default class Engine {
   startBtn() {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
+        console.log(!this.recognition.recording);
+        console.log(this.synthesis.isTalking);
         this.changeUI.record();
-        this.recognition.startRecording();
+        if(!this.recognition.recording){
+          this.recognition.startRecording();
+        } else if (this.synthesis.isTalking){
+          this.synthesis.stopTalking();
+        } else {
+          this.recognition.stopRecording();
+          this.changeUI.stop();
+        }
     })
   }
 
@@ -47,7 +56,6 @@ export default class Engine {
           this.changeUI.record();
         });
       }
-      this.recognition.startRecording();
     });
   }
 }
