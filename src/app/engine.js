@@ -41,7 +41,9 @@ export default class Engine {
 
   listenLoop() {
     this.recognition.onRecognitionResult(async (result) => {
-      if (result === this.assistantName && this.recognition.listening === false) {
+      if (result === "stop" && this.synthesis.isTalking) {
+        this.synthesis.stopTalking();
+      } else if (result === this.assistantName && this.recognition.listening === false) {
         this.recognition.listen(true);
         this.changeUI.listen();
       } else if (result !== this.assistantName && this.recognition.listening === true) {
