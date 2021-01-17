@@ -17,9 +17,10 @@ export default class Responder {
 
                 if (similarity >= 0.6) {
                     let similaryWord = element;
-                    console.log(similaryWord);
-                    return command.answer();
+                    // console.log(similaryWord);
+                    return command.answer(msg);
                 }
+            }
         }
         return this._defaultResponse;
     }
