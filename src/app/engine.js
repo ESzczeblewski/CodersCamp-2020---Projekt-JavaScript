@@ -21,32 +21,40 @@ export default class Engine {
     this.responder = new Responder();
     this.startBtn();
     this.listenLoop();
+    this.recognition.startRecognition();
   }
 
   startBtn() {
     const button = document.querySelector('.btnSpeak');
     button.addEventListener('click', () => {
-        this.changeUI.record();
-        this.recognition.startRecording();
+        if(!this.recognition.recording){
+          this.recognition.startRecording();
+          this.changeUI.record();
+        } else if (this.synthesis.isTalking){
+          this.synthesis.stopTalking();
+        } else {
+          this.recognition.stopRecording();
+          this.changeUI.stop();
+        }
     })
   }
 
   listenLoop() {
-    this.recognition.onRecognitionResult(result => {
+    this.recognition.onRecognitionResult(async (result) => {
       if (result === this.assistantName && this.recognition.listening === false) {
         this.recognition.listen(true);
         this.changeUI.listen();
       } else if (result !== this.assistantName && this.recognition.listening === true) {
         this.recognition.listen(false);
-        console.log(result);
-        let answer = this.responder.respondTo(result);
+        console.log(`result: ${result}`);
+        let answer = await this.responder.respondTo(result);
+        console.log(`answer: ${answer}`);
         this.changeUI.speak();
         this.synthesis.talk(answer);
         this.synthesis.invokeAfterTalk(() => {
           this.changeUI.record();
-        });        
+        });
       }
-      this.recognition.startRecording();
     });
   }
 }
