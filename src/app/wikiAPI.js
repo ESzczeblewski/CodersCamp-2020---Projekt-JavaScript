@@ -26,7 +26,6 @@ export default class wikiAPI {
                     srlimit: 5,
                 }
             }).then(response => {
-                // const str = response.data.query.search[0].snippet.replace(/</?[^>]+>/gi, '');
                 if(response.data.query.searchinfo.totalhits === 0) {
                     resolve("");
                 } else {
