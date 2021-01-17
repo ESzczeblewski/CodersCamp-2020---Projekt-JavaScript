@@ -46,6 +46,7 @@ export default class Engine {
       } else if (result === this.assistantName && this.recognition.listening === false) {
         this.recognition.listen(true);
         this.changeUI.listen();
+        this.changeUI.removeLinksList();
       } else if (result !== this.assistantName && this.recognition.listening === true) {
         this.recognition.listen(false);
         console.log(`result: ${result}`);
