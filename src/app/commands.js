@@ -26,10 +26,12 @@ export const Commands = [
 
                     const wikiAnswersArr = await wikipedia.processPhrase(wikiSearchPhrase);
 
+                    const wikiSnippet = wikiAnswersArr[0].snippet.replace(/(<([^>]+)>)/ig, '');
+
                     if (wikiAnswersArr) {
                         uiChanger.renderLinks(wikiAnswersArr);
                     }
-                    return wikiAnswersArr[0].snippet;
+                    return wikiSnippet;
                 }
             }
             return "Nie rozumiem pytania";
