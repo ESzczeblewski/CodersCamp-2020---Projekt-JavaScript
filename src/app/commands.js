@@ -69,7 +69,7 @@ export const Commands = [
     },
     {
         //Day of the week
-        request: ["dzień tygodnia", "jaki jest dzień tygodnia", "jaki mamy dzień tygodnia"],
+        request: ["dzień tygodnia", "jaki mamy dzień tygodnia"],
         answer() {
             const now = new Date();
             let response;

@@ -25,9 +25,9 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Dec
 5. list of built-in general commands:
     - "dzień dobry", "witaj", "cześć", "siema", "elo"
     - "do widzenia", "do zobaczenia", "na razie", "żegnaj", "nara"
-    - "godzina", "czas"
-    - "dzień tygodnia", "dzień"
-    - "inwokacja"
+    - "która jest godzina", "która godzina", "godzina", "czas"
+    - "dzień tygodnia", "jaki mamy dzień tygodnia", "dzień", "jaki mamy dzień", "który dziś"
+    - "inwokacja", "recytuj inwokację"
 6. command-similarity reactions (assistant reacts to commands that are at least in 60% similar to the ones listed above)
 7. integration with Wikipedia (assistant sends GET requests to MediaWiki Action API)
 8. list of Wikipedia commands:
