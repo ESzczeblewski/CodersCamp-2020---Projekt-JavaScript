@@ -32,6 +32,7 @@ export default class Engine {
           this.changeUI.record();
         } else if (this.synthesis.isTalking){
           this.synthesis.stopTalking();
+          this.changeUI.listen();
         } else {
           this.recognition.stopRecording();
           this.changeUI.stop();
@@ -55,7 +56,7 @@ export default class Engine {
         this.changeUI.speak();
         this.synthesis.talk(answer);
         this.synthesis.invokeAfterTalk(() => {
-          this.changeUI.record();
+          this.changeUI.speakStop();
         });
       }
     });
