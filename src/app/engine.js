@@ -67,6 +67,7 @@ export default class Engine {
 				let answer = await this.responder.respondTo(result);
 				this.changeUI.speak();
 				this.synthesis.talk(answer);
+				console.log(`answer: ${answer}`);
 
 				this.synthesis.invokeAfterTalk(() => {
 					this.changeUI.speakStop();
