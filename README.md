@@ -55,29 +55,29 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Dec
 * [string-similarity](https://www.npmjs.com/package/string-similarity)
 
 ## Project scope
-- zmienne
-- operatory porównania
-- pętle
-- obiekty, atrybuty
-- warunki
-- funkcje
-- operatory logiczne
-- tablice
-- iteracja i/lub rekurencja
+- variables
+- comparison operators
+- logical operators
+- conditions
+- iteration and / or recursion
+- loops
+- arrays
+- functions
+- objects, attributes
 - console
 - return
 - "===" vs "=="
-- integracja z zewnętrznym REST API
-- interakcja z domem
-- odwoływanie się do elementów DOM z JavaScript
-- zmiana stylów z poziomu JSa
-- zmiana zawartości HTML z poziomu JSa
-- animacje
-- zewnętrzne biblioteki
-- async await i/lub Promise
-- funkcje callback
-- metody HTTP
-- pisanie testów jednostkowych 
+- referencing DOM elements from JavaScript
+- interaction with DOM
+- changing HTML content with JavaScript
+- changing CSS styles with JavaScript
+- animations
+- async/await & Promises
+- callback functions
+- integration with external REST API
+- external libraries
+- HTTP methods
+- unit tests 
 
 ## Team
 #### Development:
