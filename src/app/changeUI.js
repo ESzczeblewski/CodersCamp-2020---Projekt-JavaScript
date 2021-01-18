@@ -86,7 +86,7 @@ export default class ChangeUI {
 
     speak() {
         this._setupLines(); 
-        this.face.amplitude = 80;
+        this.face.amplitude = 30;
         this.face.frequency = 0.02;
     }
 
