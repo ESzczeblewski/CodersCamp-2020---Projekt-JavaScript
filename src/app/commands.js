@@ -63,7 +63,8 @@ export const Commands = [
         request: ["która jest godzina", "która godzina", "godzina", "czas"],
         answer() {
             const now = new Date();
-            return now.toLocaleTimeString();
+            const timeStringSplit = now.toLocaleTimeString().split(':');
+            return `${timeStringSplit[0]}:${timeStringSplit[1]}`;
         }
     },
     {
