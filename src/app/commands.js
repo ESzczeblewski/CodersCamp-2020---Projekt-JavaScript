@@ -1,4 +1,6 @@
 import wikiAPI from './wikiAPI.js';
+import ChangeUI from './changeUI';
+
 export const Commands = [
     {
         //Wikipedia
@@ -17,18 +19,24 @@ export const Commands = [
         ],
         async answer(msg) {
             const wikipedia = new wikiAPI();
-            for (const wikiQuestion of this.request) {
-                if (msg.includes(wikiQuestion)) {
+            const uiChanger = new ChangeUI();
+            for (const wikiQuestion of this.request){
+                if(msg.includes(wikiQuestion)) {
                     const wikiSearchPhrase = msg.replace(`${wikiQuestion} `, "");
-                    const wikiAnswersArr = await wikipedia.processPhrase(wikiSearchPhrase); // zwraca tablicę obiektów (albo pustego stringa, jeśli brak odpowiedzi na zadane hasło)
-                    console.log(wikiAnswersArr); //DEV ONLY
-                    return "Przeszukałem wiki";
+
+                    const wikiAnswersArr = await wikipedia.processPhrase(wikiSearchPhrase);
+                  
+                    const wikiSnippet = wikiAnswersArr[0].snippet.replace(/(<([^>]+)>)/ig, '');
+
+                    if (wikiAnswersArr) {
+                        uiChanger.renderLinks(wikiAnswersArr);
+                    }
+                    return wikiSnippet;
                 }
             }
             return "Nie rozumiem pytania";
         }
     },
-
     {
         //Greeting
         request: ["dzień dobry", "witaj"],
@@ -36,7 +44,6 @@ export const Commands = [
             return _internalResponse.call(this);
         }
     },
-
     {
         //Farewell
         request: ["do widzenia", "do zobaczenia", "na razie", "żegnaj", "nara"],
@@ -44,7 +51,6 @@ export const Commands = [
             return _internalResponse.call(this);
         }
     },
-
     {
         //Salutations
         request: ["cześć", "siema", "elo",],
@@ -52,19 +58,17 @@ export const Commands = [
             return _internalResponse.call(this);
         }
     },
-
     {
         //Time request
-        request: ["godzina", "czas"],
+        request: ["która jest godzina", "która godzina", "godzina", "czas"],
         answer() {
             const now = new Date();
             return now.toLocaleTimeString();
         }
     },
-
     {
         //Day of the week
-        request: ["dzień tygodnia"],
+        request: ["dzień tygodnia", "jaki jest dzień tygodnia", "jaki mamy dzień tygodnia"],
         answer() {
             const now = new Date();
             let response;
@@ -95,19 +99,17 @@ export const Commands = [
             return "jest " + response;
         }
     },
-
     {
         //Date request
-        request: ["dzień"],
+        request: ["dzień", "jaki mamy dzień", "który dziś"],
         answer() {
             const now = new Date();
             return now.toLocaleDateString();
         }
     },
-
     {
-        //LOREM IPSUM //dev-only
-        request: ["inwokacja", "inwokację"],
+        //Invocation from "Pan Tadeusz"
+        request: ["inwokacja", "recytuj inwokację"],
         answer() {
             return "Litwo! Ojczyzno moja! Ty jesteś jak zdrowie, Ile cię trzeba cenić, ten tylko się dowie, Kto cię stracił. Dziś piękność twą w całej ozdobie Widzę i opisuję, bo tęsknię po tobie";
         }

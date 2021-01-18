@@ -32,6 +32,7 @@ export default class Engine {
           this.changeUI.record();
         } else if (this.synthesis.isTalking){
           this.synthesis.stopTalking();
+          this.changeUI.listen();
         } else {
           this.recognition.stopRecording();
           this.changeUI.stop();
@@ -41,9 +42,12 @@ export default class Engine {
 
   listenLoop() {
     this.recognition.onRecognitionResult(async (result) => {
-      if (result === this.assistantName && this.recognition.listening === false) {
+      if (result === "stop" && this.synthesis.isTalking) {
+        this.synthesis.stopTalking();
+      } else if (result === this.assistantName && this.recognition.listening === false) {
         this.recognition.listen(true);
         this.changeUI.listen();
+        this.changeUI.removeLinksList();
       } else if (result !== this.assistantName && this.recognition.listening === true) {
         this.recognition.listen(false);
         console.log(`result: ${result}`);
@@ -52,7 +56,7 @@ export default class Engine {
         this.changeUI.speak();
         this.synthesis.talk(answer);
         this.synthesis.invokeAfterTalk(() => {
-          this.changeUI.record();
+          this.changeUI.speakStop();
         });
       }
     });
