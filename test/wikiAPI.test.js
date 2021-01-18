@@ -9,7 +9,7 @@ const mockWikiResponse = (mySearch, myTotalhits) => {
     return {data: {query: {search: mySearch, searchinfo: {totalhits: myTotalhits}}}}
 }
 
-test('check if found phrase', () => {
+test('check wikiRequest for found result', () => {
     
     const result = "wikiresult";
     const totalHits = 1;
@@ -19,14 +19,14 @@ test('check if found phrase', () => {
     return wiki._wikiRequest().then(data => expect(data).toEqual(result));
 })
 
-test('check for no phrase', () => {
+test('check wikiRequest for no result', () => {
     const resp = mockWikiResponse(null, 0);
 
     axios.get.mockResolvedValue(resp);
     return wiki._wikiRequest().then(data => expect(data).toEqual(''));
 })
 
-test(' check processPhrase function', () => {
+test('check processPhrase for found result', () => {
     const result = "wikiresult";
     const totalHits = 1;
     const phrase = "Piłsudski";
@@ -36,7 +36,7 @@ test(' check processPhrase function', () => {
     return wiki.processPhrase(phrase).then(data => expect(data).toEqual(resp.data.query.search));
 })
 
-test('Invalid response', async () => {
+test('check processPhrase for no response', async () => {
     const phrase = 'auto';
     const error = 'błąd';
     axios.get.mockRejectedValue(error);
