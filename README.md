@@ -88,11 +88,11 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Dec
 * [Aleksandra Żochowska](https://github.com/axios/axios)
 
 ##### Tech Lead:
-[Ernest Szczeblewski](https://github.com/axios/axios)
+* [Ernest Szczeblewski](https://github.com/axios/axios)
 ##### Product Owner:
-[Anna Żak](https://github.com/axios/axios)
+* [Anna Żak](https://github.com/axios/axios)
 ##### Development Manager:
-[Aleksandra Żochowska](https://github.com/axios/axios)
+* [Aleksandra Żochowska](https://github.com/axios/axios)
 
 ## Live Preview
 To see the project, visit:
