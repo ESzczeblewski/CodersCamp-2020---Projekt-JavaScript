@@ -135,14 +135,12 @@ body {
   height: 36vh;
   z-index: 1;
   overflow: hidden;
-  
-
+ 
   #canvas {
-    width: 100%;
+    width: 100vh;
     height: 100%;
     background: transparent;
   }
-
 }
 
 .btnSpeak {
@@ -175,7 +173,6 @@ body {
     width: 35%;
     height: 35%;
   }
-
 }
 
   .recordColor1 {

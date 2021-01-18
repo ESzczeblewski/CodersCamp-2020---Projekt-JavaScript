@@ -37,7 +37,7 @@ export default class ChangeUI {
 
     _drawLines() {
        
-       this.face.width = this.face.ctx.canvas.width = window.innerWidth; //vh(36);
+       this.face.width = this.face.ctx.canvas.width = window.innerWidth;
        this.face.height = this.face.ctx.canvas.height = vh(36);
        this.face.ctx.moveTo(0, this.face.height/2);
        this.face.numberOfLines = 2;
@@ -46,7 +46,7 @@ export default class ChangeUI {
 
        function vh(v) {
            const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            return (v * h) / 100;
+           return (v * h) / 100;
         }
 
         this.face.no++;        
@@ -65,7 +65,6 @@ export default class ChangeUI {
         this.face.ctx.lineWidth = 1.5;
         this.face.ctx.strokeStyle = this.face.ctx.strokeStyle; 
         this.face.ctx.stroke();
-
        }
     }
 
@@ -86,7 +85,7 @@ export default class ChangeUI {
 
     speak() {
         this._setupLines(); 
-        this.face.amplitude = 80;
+        this.face.amplitude = 30;
         this.face.frequency = 0.02;
     }
 
@@ -116,8 +115,8 @@ export default class ChangeUI {
         this.removeLinksList('.wiki-list');
 
         const wikiListDiv = document.createElement('div');
-       
         wikiListDiv.classList.add('wiki-list-new');
+ 
         const wikiHeader = document.createElement('p')
         wikiHeader.classList.add('wiki-list-header');
         wikiHeader.innerHTML = 'Odnośniki do Wikipedii';
@@ -127,8 +126,8 @@ export default class ChangeUI {
         
         wikiListDiv.innerHTML = wikiHeader;
         wikiListDiv.innerHTML = linksArr.join('');
+ 
         wikiListDiv.insertAdjacentElement('afterbegin',wikiHeader);
-            
         this.wikiDiv.insertAdjacentElement('beforeend', wikiListDiv);
     }
 }
