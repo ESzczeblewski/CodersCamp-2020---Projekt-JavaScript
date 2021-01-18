@@ -1,4 +1,4 @@
-# Voice Assistant Kamil
+# Voice Assistant Grażyna
 **CodersCamp 2020 - Project JavaScript** 
 
 ## Table of contents
