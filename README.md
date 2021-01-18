@@ -13,6 +13,8 @@
 Aim of the project was to build a responsive voice assistant, able to communicate with a user on a basic level.
 Assitant can "hear" what is being said & "say" back adequate answers. Project is created with usage of Web Speech API.
 
+*** Assistant should be used on latest versions of Google Chrome browser (due to Web Speech API compatibility issues) ***
+
 Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Dec 2020 - Jan 2021 with JavaScript.
 
 ## Functionalitites:
