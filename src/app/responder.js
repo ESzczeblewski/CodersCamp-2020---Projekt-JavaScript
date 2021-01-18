@@ -1,9 +1,10 @@
-import {Commands}  from "./commands"
+import { Commands }  from "./commands"
 import stringSimilarity from "string-similarity";
 
 export default class Responder {
+    
     constructor(settings = {}) {
-        this._settings = settings
+        this._settings = settings;
         this._defaultResponse = this._settings.defaultResponse || "nie rozumiem";
         this._commandList = Commands;
     }
