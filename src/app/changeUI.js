@@ -86,7 +86,7 @@ export default class ChangeUI {
 
     speak() {
         this._setupLines(); 
-        this.face.amplitude = 30;
+        this.face.amplitude = 80;
         this.face.frequency = 0.02;
     }
 
@@ -100,14 +100,13 @@ export default class ChangeUI {
     stop() {
         this.face1.classList.add('btnFace');
         this.removeLinksList('.wiki-list-new');
-        console.log('jestem w stop');
         this._spanColor.forEach( (x,i) => {
             this[`faceColor${(i+1)}`].classList.remove(`recordColor${i+1}`);
             this[`faceColor${(i+1)}`].classList.add(`btnFace-${x}`);
         });
      }
 
-     removeLinksList(className) {
+    removeLinksList(className) {
         if (this.wikiDiv.querySelector(className)) {
             this.wikiDiv.querySelector(className).remove();
         }
@@ -117,15 +116,19 @@ export default class ChangeUI {
         this.removeLinksList('.wiki-list');
 
         const wikiListDiv = document.createElement('div');
+       
         wikiListDiv.classList.add('wiki-list-new');
+        const wikiHeader = document.createElement('p')
+        wikiHeader.classList.add('wiki-list-header');
+        wikiHeader.innerHTML = 'Odnośniki do Wikipedii';
 
         const wikiLink = 'https://pl.wikipedia.org/?curid=';
-
         const linksArr = arr.map(el => `<a class="wiki-list-item" href="${wikiLink}${el.pageid}" target="_blank">${el.title}</a>`);
-
+        
+        wikiListDiv.innerHTML = wikiHeader;
         wikiListDiv.innerHTML = linksArr.join('');
-
+        wikiListDiv.insertAdjacentElement('afterbegin',wikiHeader);
+            
         this.wikiDiv.insertAdjacentElement('beforeend', wikiListDiv);
     }
-
 }
