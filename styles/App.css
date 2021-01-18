@@ -138,7 +138,7 @@ body {
 }
 
 .waves #canvas {
-  width: 100%;
+  width: 100vh;
   height: 100%;
   background: transparent;
 }
