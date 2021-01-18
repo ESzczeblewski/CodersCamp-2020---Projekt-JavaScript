@@ -1,5 +1,6 @@
 import { Commands } from "./commands"
 
+
 export default class Responder {
     constructor(settings = {}) {
         this._settings = settings
@@ -8,13 +9,12 @@ export default class Responder {
     }
 
     respondTo(msg) {
-
+        
+        const stringSimilarity = require("string-similarity");
         for (const command of this._commandList) {
 
-            for (let element of command.request) {
-                let stringSimilarity = require("string-similarity");
-                let similarity = stringSimilarity.compareTwoStrings(msg.substring(0, element.length), element);
-
+            for (const element of command.request) {
+                const similarity = stringSimilarity.compareTwoStrings(msg.substring(0, element.length), element);
                 if (similarity >= 0.6) {
                     return command.answer(msg);
                 }
