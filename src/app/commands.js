@@ -73,7 +73,7 @@ export const Commands = [
             const now = new Date();
             let response;
             const dayNumber = now.getDay();
-            switch(dayNumber){
+            switch (dayNumber) {
                 case 0:
                     response = "niedziela";
                     break;
@@ -116,11 +116,11 @@ export const Commands = [
     }
 ]
 
-function _internalResponse() {
+export function _internalResponse() {
     const respArray = this.request;
     return respArray[_randomInt(respArray.length)]
 }
 
-function _randomInt(upperB) {
+export function _randomInt(upperB) {
     return Math.floor(Math.random() * upperB)
 }
