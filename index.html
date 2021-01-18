@@ -6,19 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>CodersCamp2020 | Voice Assistant</title>
+    <link rel="icon" type="image/png" href="./static/assets/img/favicon-32x32.png">
     <link rel="stylesheet" href="styles/App.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container">
-        <div class="voiceToText">Voice to Text</div>
-        <div class="btnFace">
-            <img src="./static/assets/img/face.svg" alt="face">
+        <div class="wiki">
+            <div class="wiki-list"></div>
         </div>
-        <div class="textToVoice">
-            <!-- <textarea class="textToVoice__textarea" placeholder="Text to Voice" rows="6" cols="20"></textarea> -->
-            <button type="button" class="btnSpeak">Speak</button>
+        <div class="btnFace">
+            <span class="btnFace-color1"></span>
+            <span class="btnFace-color2"></span>
+            <span class="btnFace-color3"></span>
+            <span class="btnFace-color4"></span>
+        </div>
+
+        <div class="waves">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="btnSpeak">
+            <img class="img_button" src="./static/assets/img/microphone.png" alt="microphone">
         </div>
     </div>
 
