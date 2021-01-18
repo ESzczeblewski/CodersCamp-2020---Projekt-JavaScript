@@ -25,7 +25,6 @@ export const Commands = [
                     const wikiSearchPhrase = msg.replace(`${wikiQuestion} `, "");
 
                     const wikiAnswersArr = await wikipedia.processPhrase(wikiSearchPhrase);
-
                     if (wikiAnswersArr) {
                         uiChanger.renderLinks(wikiAnswersArr);
                     }
@@ -35,7 +34,6 @@ export const Commands = [
             return "Nie rozumiem pytania";
         }
     },
-
     {
         //Greeting
         request: ["dzień dobry", "witaj"],
@@ -43,7 +41,6 @@ export const Commands = [
             return _internalResponse.call(this);
         }
     },
-
     {
         //Farewell
         request: ["do widzenia", "do zobaczenia", "na razie", "żegnaj", "nara"],
@@ -51,7 +48,6 @@ export const Commands = [
             return _internalResponse.call(this);
         }
     },
-
     {
         //Salutations
         request: ["cześć", "siema", "elo",],
@@ -59,19 +55,17 @@ export const Commands = [
             return _internalResponse.call(this);
         }
     },
-
     {
         //Time request
-        request: ["godzina", "czas"],
+        request: ["która jest godzina", "która godzina", "godzina", "czas"],
         answer() {
             const now = new Date();
             return now.toLocaleTimeString();
         }
     },
-
     {
         //Day of the week
-        request: ["dzień tygodnia"],
+        request: ["dzień tygodnia", "jaki jest dzień tygodnia", "jaki mamy dzień tygodnia"],
         answer() {
             const now = new Date();
             let response;
@@ -102,19 +96,17 @@ export const Commands = [
             return "jest " + response;
         }
     },
-
     {
         //Date request
-        request: ["dzień"],
+        request: ["dzień", "jaki mamy dzień", "który dziś"],
         answer() {
             const now = new Date();
             return now.toLocaleDateString();
         }
     },
-
     {
-        //LOREM IPSUM //dev-only
-        request: ["inwokacja", "inwokację"],
+        //Invocation from "Pan Tadeusz"
+        request: ["inwokacja", "recytuj inwokację"],
         answer() {
             return "Litwo! Ojczyzno moja! Ty jesteś jak zdrowie, Ile cię trzeba cenić, ten tylko się dowie, Kto cię stracił. Dziś piękność twą w całej ozdobie Widzę i opisuję, bo tęsknię po tobie";
         }
