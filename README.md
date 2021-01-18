@@ -19,16 +19,16 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Dec
 1. graphical interface (changing to show current "state" of assistant: OFF / ON / LISTENING / TALKING)
 2. speech to text (assistant logs into the console what had been said during his LISTENING state)
 3. text to speech (assistant reads answer snippets from Wikipedia API in TALKING state)
-4. integration with Wikipedia (assistant sends GET requests to MediaWiki Action API)
-
+4. wake-word (assistant starts LISTENING only after his name is called)
 5. list of built-in general commands:
     - "dzień dobry", "witaj", "cześć", "siema", "elo"
     - "do widzenia", "do zobaczenia", "na razie", "żegnaj", "nara"
     - "godzina", "czas"
     - "dzień tygodnia", "dzień"
     - "inwokacja"
-
-6. list of Wikipedia commands:
+6. command-similarity reactions (assistant reacts to commands that are at least in 60% similar to the ones listed above)
+7. integration with Wikipedia (assistant sends GET requests to MediaWiki Action API)
+8. list of Wikipedia commands:
     - "co to jest",
     - "co to znaczy",
     - "co to",
@@ -42,13 +42,13 @@ Project was created during [CodersCamp Course](https://coderscamp.edu.pl) in Dec
     - "jakie są"
 
 ## Technologies
-Project is created with:
+### Project was created with:
 * JavaScript
 * SCSS
 * CSS
 * HTML
 
-API's used:
+### API's & libraries used:
 * [Web Speech API](https://github.com/axios/axios)
 * [Wikipedia API: MediaWiki Action API](https://github.com/axios/axios)
 * [axios](https://github.com/axios/axios)
